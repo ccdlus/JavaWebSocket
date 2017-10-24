@@ -12,13 +12,14 @@ public class Monitor implements Runnable {
     @Override
     public void run() {
         WebSocketTest webSocketTest = new WebSocketTest();
-        webSocketTest.sendMsg("当前时间:" + new Date());
+        webSocketTest.sendMsg("ๅฝ“ๅ��ๆ—ถ้—ด:" + new Date());
     }
 
     public void sendMsg() {
         ScheduledExecutorService newScheduledThreadPool = Executors.newSingleThreadScheduledExecutor();
-        newScheduledThreadPool.scheduleWithFixedDelay(new Monitor(), 20, 5, TimeUnit.SECONDS);
-
+//        newScheduledThreadPool.scheduleWithFixedDelay(new Monitor(), 20, 5, TimeUnit.SECONDS);
+        //run every 10s fixed rate
+        newScheduledThreadPool.scheduleAtFixedRate(new Monitor(), 0, 10, TimeUnit.SECONDS);
     }
 }
 
